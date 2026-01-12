@@ -28,6 +28,7 @@
 
       buildInputs = with pkgs; [
         at-spi2-atk
+        xdg-utils
         atkmm
         cairo
         gdk-pixbuf
@@ -40,6 +41,13 @@
         webkitgtk_4_1
         openssl
       ];
+      shellHook = ''
+        export PATH=$PATH:/run/current-system/sw/bin
+        # Crée un lien temporaire vers /usr/bin/xdg-open
+        mkdir -p $HOME/.local/bin
+        ln -sf $(which xdg-open) $HOME/.local/bin/xdg-open
+        export PATH=$HOME/.local/bin:$PATH
+      '';
     };
   };
 }
