@@ -1,4 +1,3 @@
-
 import { useLocation } from "preact-iso"
 import { Building2 } from "lucide-preact"
 
