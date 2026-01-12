@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "admin-app",
+  "productName": "mosifra-admin-app",
   "version": "0.1.0",
-  "identifier": "com.admin-app.app",
+  "identifier": "com.mosifra-admin-app.app",
   "build": {
     "beforeDevCommand": "bun run dev",
     "devUrl": "http://localhost:1420",
@@ -12,9 +12,9 @@
   "app": {
     "windows": [
       {
-        "title": "admin-app",
-        "width": 800,
-        "height": 600
+        "title": "Mosifra - Application d'administration",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "security": {
