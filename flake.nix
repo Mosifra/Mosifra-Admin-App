@@ -21,6 +21,9 @@
         cargo-tauri
         nodejs
         rustc
+        rustfmt
+        clippy
+        rust-analyzer
       ];
 
       buildInputs = with pkgs; [
