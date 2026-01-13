@@ -9,15 +9,22 @@ export default function CreateCompany() {
   const [mail, setMail] = useState("")
   const [name, setName] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-
-    console.log({
-      login,
-      mail,
-      companyName: name,
-    })
-
+    const headers = new Headers();
+    /* jwt + headers */
+    const options = {
+      method: "",
+      headers: headers,
+      redirect: "follow"
+    };
+    try {
+      const response = await fetch("", options);
+      const data = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+    location.route("")
     location.route("/admin")
   }
 
