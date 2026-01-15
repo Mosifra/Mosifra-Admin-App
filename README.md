@@ -13,6 +13,8 @@ The flake sets up a complete development environment, including:
 - **Node.js**
 - All necessary GTK, WebKit, and system libraries for Tauri on Linux
 
+To use it, you only need **Nix** installed with the experimental features `nix-command` and `flakes` enabled.
+
 Once inside the dev shell:
 
 - Environment variables are configured automatically.
