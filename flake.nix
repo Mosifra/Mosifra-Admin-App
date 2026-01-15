@@ -47,6 +47,7 @@
         mkdir -p $HOME/.local/bin
         ln -sf $(which xdg-open) $HOME/.local/bin/xdg-open
         export PATH=$HOME/.local/bin:$PATH
+        neovide &
       '';
     };
   };
