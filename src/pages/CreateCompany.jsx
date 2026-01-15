@@ -9,6 +9,14 @@ export default function CreateCompany() {
   const [mail, setMail] = useState("")
   const [name, setName] = useState("")
 
+  useEffect(() => {
+    const jwt = sessionStorage.getItem("jwt")
+
+    if (!jwt) {
+      location.route("/admin/login")
+    }
+  }, [])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
