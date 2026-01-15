@@ -1,6 +1,7 @@
 
 import { useState } from "preact/hooks"
 import { useLocation } from "preact-iso"
+import { invoke } from "@tauri-apps/api/core"
 
 export default function CreateUniversity() {
   const location = useLocation()
@@ -11,6 +12,13 @@ export default function CreateUniversity() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
+      await (
+        invoke('create_university', { login: login, mail: mail, name: name })
+      )
+    } catch (err) {
+      console.log(err)
+    }
     location.route("/admin")
   }
 

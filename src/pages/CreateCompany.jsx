@@ -11,20 +11,13 @@ export default function CreateCompany() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const headers = new Headers();
-    /* jwt + headers */
-    const options = {
-      method: "",
-      headers: headers,
-      redirect: "follow"
-    };
     try {
-      const response = await fetch("", options);
-      const data = await response.json();
-    } catch (error) {
-      console.log(error);
+      await (
+        invoke('create_company', { login: login, mail: mail, name: name })
+      )
+    } catch (err) {
+      console.log(err)
     }
-    location.route("")
     location.route("/admin")
   }
 
