@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks"
 import { useLocation } from "preact-iso"
-import { invoke } from "@tauri-apps/api/tauri"
+import { invoke } from '@tauri-apps/api/core';
 
 export default function AdminLogin() {
   const location = useLocation()
@@ -16,12 +16,12 @@ export default function AdminLogin() {
 
       if (response.success && response.jwt) {
         sessionStorage.setItem("jwt", response.jwt)
-        location.route("/admin")
+        location.route("/")
       } else {
         setError("Mot de passe incorrect")
       }
     } catch (err) {
-      setError("Une erreur s'est glissée")
+      setError("Erreur")
       console.error(err)
     }
   }
@@ -47,7 +47,7 @@ export default function AdminLogin() {
               value={password}
               onInput={(e) => setPassword((e.target).value)}
               className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-vert-mosifra"
-              placeholder="Entrez votre mot de passe sacré"
+              placeholder="Entrez votre mot de passe"
               required
             />
           </div>

@@ -1,7 +1,7 @@
-
+import { invoke } from '@tauri-apps/api/core';
 import { useState } from "preact/hooks"
 import { useLocation } from "preact-iso"
-import { invoke } from "@tauri-apps/api/core"
+import { useEffect } from "preact/hooks"
 
 export default function CreateUniversity() {
   const location = useLocation()
@@ -14,7 +14,7 @@ export default function CreateUniversity() {
     const jwt = sessionStorage.getItem("jwt")
 
     if (!jwt) {
-      location.route("/admin/login")
+      location.route("/login")
     }
   }, [])
 

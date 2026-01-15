@@ -9,7 +9,7 @@ export default function AdminPanel() {
     const jwt = sessionStorage.getItem("jwt")
 
     if (!jwt) {
-      location.route("/admin/login")
+      location.route("/login")
     }
   }, [])
 
