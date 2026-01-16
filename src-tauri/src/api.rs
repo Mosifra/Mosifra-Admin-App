@@ -19,6 +19,7 @@ pub async fn create_university_request(
     login: String,
     mail: String,
     name: String,
+    jwt: String,
 ) -> Result<CreateUniversityResponse, reqwest::Error> {
     let mut body = HashMap::new();
     body.insert("login", login);
@@ -28,7 +29,14 @@ pub async fn create_university_request(
     let mut url = env::var("API_BASEURL").unwrap();
     url.push_str("/create/university");
     let client = reqwest::Client::new();
-    let body = client.post(url).json(&body).send().await?.json().await?;
+    let body = client
+        .post(url)
+        .bearer_auth(jwt)
+        .json(&body)
+        .send()
+        .await?
+        .json()
+        .await?;
     Ok(body)
 }
 
@@ -36,6 +44,7 @@ pub async fn create_company_request(
     login: String,
     mail: String,
     name: String,
+    jwt: String,
 ) -> Result<CreateCompanyResponse, reqwest::Error> {
     let mut body = HashMap::new();
     body.insert("login", login);
@@ -44,6 +53,13 @@ pub async fn create_company_request(
     let mut url = env::var("API_BASEURL").unwrap();
     url.push_str("/create/company");
     let client = reqwest::Client::new();
-    let body = client.post(url).json(&body).send().await?.json().await?;
+    let body = client
+        .post(url)
+        .bearer_auth(jwt)
+        .json(&body)
+        .send()
+        .await?
+        .json()
+        .await?;
     Ok(body)
 }

@@ -9,6 +9,8 @@ export default function CreateCompany() {
   const [name, setName] = useState("")
   const [generatedPassword, setGeneratedPassword] = useState("")
 
+  const jwt = sessionStorage.getItem("jwt")
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -16,6 +18,7 @@ export default function CreateCompany() {
       login,
       mail,
       name,
+      jwt,
     }).then((password) => setGeneratedPassword(password))
 
     location.route("/success", {

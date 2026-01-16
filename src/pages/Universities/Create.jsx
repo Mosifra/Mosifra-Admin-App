@@ -13,10 +13,12 @@ export default function CreateUniversity() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    const jwt = sessionStorage.getItem("jwt")
     await invoke("create_university", {
       login,
       mail,
       name,
+      jwt,
     }).then((password) => setGeneratedPassword(password))
 
     location.route("/success", {
