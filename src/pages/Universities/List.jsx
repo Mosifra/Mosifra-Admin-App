@@ -41,7 +41,7 @@ export default function UniversityList() {
               <tr>
                 <th className="p-4 text-left">Login</th>
                 <th className="p-4 text-left">Nom</th>
-                <th className="p-4 text-left">Mail</th>
+                <th className="p-4 text-left">Courriel</th>
                 <th className="p-4"></th>
               </tr>
             </thead>
