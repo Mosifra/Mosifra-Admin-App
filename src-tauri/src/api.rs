@@ -1,6 +1,7 @@
-use std::collections::HashMap;
-
+use dotenvy::dotenv;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use std::env;
 
 #[derive(Serialize, Deserialize)]
 pub struct CreateUniversityResponse {
@@ -23,7 +24,9 @@ pub async fn create_university_request(
     body.insert("login", login);
     body.insert("mail", mail);
     body.insert("name", name);
-    let url = "http://localhost:8000/create/university";
+    dotenv().ok();
+    let mut url = env::var("API_BASEURL").unwrap();
+    url.push_str("/create/university");
     let client = reqwest::Client::new();
     let body = client.post(url).json(&body).send().await?.json().await?;
     Ok(body)
@@ -38,7 +41,8 @@ pub async fn create_company_request(
     body.insert("login", login);
     body.insert("mail", mail);
     body.insert("name", name);
-    let url = "http://localhost:8000/create/company";
+    let mut url = env::var("API_BASEURL").unwrap();
+    url.push_str("/create/company");
     let client = reqwest::Client::new();
     let body = client.post(url).json(&body).send().await?.json().await?;
     Ok(body)
