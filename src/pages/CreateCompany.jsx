@@ -27,7 +27,7 @@ export default function CreateCompany() {
     } catch (err) {
       console.log(err)
     }
-    location.route("/admin")
+    location.route("/")
   }
 
   return (

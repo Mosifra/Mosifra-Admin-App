@@ -27,7 +27,7 @@ export default function CreateUniversity() {
     } catch (err) {
       console.log(err)
     }
-    location.route("/admin")
+    location.route("/")
   }
 
   return (
