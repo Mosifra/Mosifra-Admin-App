@@ -10,20 +10,25 @@ export default function CreateUniversity() {
   const [name, setName] = useState("")
   const [generatedPassword, setGeneratedPassword] = useState("")
 
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
+      const password = await invoke("create_university", {
+        login,
+        mail,
+        name,
+        jwt,
+      })
 
-    const jwt = sessionStorage.getItem("jwt")
-    await invoke("create_university", {
-      login,
-      mail,
-      name,
-      jwt,
-    }).then((password) => setGeneratedPassword(password))
+      setGeneratedPassword(password)
 
-
-    location.route(`/success?password=${password}&redirect=/universities`);
+      location.route(`/success?password=${password}&redirect=/universities`)
+    } catch {
+      setGeneratedPassword("Erreur lors de la récupération du mot de passe")
+    }
   }
+
 
   return (
     <main className="min-h-screen min-w-screen bg-beige-mosifra">

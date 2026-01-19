@@ -10,18 +10,23 @@ export default function CreateCompany() {
   const [generatedPassword, setGeneratedPassword] = useState("")
 
   const jwt = sessionStorage.getItem("jwt")
-
   const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
+      const password = await invoke("create_company", {
+        login,
+        mail,
+        name,
+        jwt,
+      })
 
-    await invoke("create_company", {
-      login,
-      mail,
-      name,
-      jwt,
-    }).then((password) => setGeneratedPassword(password))
+      setGeneratedPassword(password)
 
-    location.route(`/success?password=${password}&redirect=/companies`);
+      // redirection après avoir obtenu le mot de passe
+      location.route(`/success?password=${password}&redirect=/companies`)
+    } catch {
+      setGeneratedPassword("Erreur lors de la récupération du mot de passe")
+    }
   }
 
   return (

@@ -44,18 +44,22 @@ pub async fn get_base_url() -> Result<String, String> {
 
 #[tauri::command]
 pub async fn get_universities(jwt: String) -> Result<Vec<University>, String> {
-    fetch_universities_request(jwt)
-        .await
-        .unwrap()
-        .universities
-        .map_err(|_| "Erreur lors du fetch des universités".to_string())
+    match fetch_universities_request(jwt).await {
+        Ok(response) => Ok(response.universities?),
+        Err(err) => {
+            eprintln!("Erreur fetch_universities_request: {:?}", err);
+            Err("Erreur lors du fetch des universités".to_string())
+        }
+    }
 }
 
 #[tauri::command]
 pub async fn get_companies(jwt: String) -> Result<Vec<Company>, String> {
-    fetch_companies_request(jwt)
-        .await
-        .unwrap()
-        .companies
-        .map_err(|_| "Erreur lors du fetch des universités".to_string())
+    match fetch_companies_request(jwt).await {
+        Ok(response) => Ok(response.companies?),
+        Err(err) => {
+            eprintln!("Erreur fetch_companies_request: {:?}", err);
+            Err("Erreur lors du fetch des entreprises".to_string())
+        }
+    }
 }
