@@ -54,7 +54,7 @@ export default function CompaniesList() {
                   <td className="p-4">{u.mail}</td>
                   <td className="p-4 text-right">
                     <button
-                      className="text-red-600 font-semibold hover:bg-red-600 hover:text-white transition-all"
+                      className="text-red-600 rounded-lg p-2 font-semibold hover:bg-red-600 hover:text-white transition-all"
                     >Supprimer</button>
                   </td>
                 </tr>
