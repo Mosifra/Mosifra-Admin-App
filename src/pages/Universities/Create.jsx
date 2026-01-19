@@ -10,7 +10,7 @@ export default function CreateUniversity() {
   const [name, setName] = useState("")
   const [generatedPassword, setGeneratedPassword] = useState("")
 
-
+  const jwt = sessionStorage.getItem("jwt")
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {

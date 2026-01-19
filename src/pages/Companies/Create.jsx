@@ -22,7 +22,6 @@ export default function CreateCompany() {
 
       setGeneratedPassword(password)
 
-      // redirection après avoir obtenu le mot de passe
       location.route(`/success?password=${password}&redirect=/companies`)
     } catch {
       setGeneratedPassword("Erreur lors de la récupération du mot de passe")
