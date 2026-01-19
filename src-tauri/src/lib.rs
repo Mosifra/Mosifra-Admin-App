@@ -5,7 +5,7 @@ mod domain;
 
 use crate::auth::login;
 use crate::commands::{
-    create_company, create_university, delete_companies, delete_universities, get_companies,
+    create_company, create_university, delete_company, delete_university, get_companies,
     get_universities,
 };
 
@@ -19,8 +19,8 @@ pub fn run() {
             login,
             get_universities,
             get_companies,
-            delete_companies,
-            delete_universities,
+            delete_university,
+            delete_company,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

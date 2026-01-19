@@ -16,8 +16,9 @@ export default function UniversityList() {
     fetchUniversities()
   }, [])
 
-  const handleDelete = async (e) => {
+  const handleDelete = async (e, id) => {
     e.preventDefault()
+    const jwt = sessionStorage.getItem("jwt")
     try {
       await invoke("delete_university", { jwt: jwt, id: id })
       setUniversities((prev) => prev.filter((u) => u.id !== id))

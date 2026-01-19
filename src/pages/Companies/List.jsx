@@ -15,8 +15,9 @@ export default function CompaniesList() {
     fetchCompanies()
   }, [])
 
-  const handleDelete = async (e) => {
+  const handleDelete = async (e, id) => {
     e.preventDefault()
+    const jwt = sessionStorage.getItem("jwt")
     try {
       await invoke("delete_company", { jwt: jwt, id: id })
       setCompanies((prev) => prev.filter((u) => u.id !== id))

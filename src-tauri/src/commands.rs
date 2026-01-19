@@ -65,7 +65,7 @@ pub async fn get_companies(jwt: String) -> Result<Vec<Company>, String> {
 }
 
 #[tauri::command]
-pub async fn delete_universities(jwt: String, id: String) -> Result<bool, String> {
+pub async fn delete_university(jwt: String, id: String) -> Result<bool, String> {
     match delete_university_request(jwt, id).await {
         Ok(response) => Ok(response.success),
         Err(err) => {
@@ -76,7 +76,7 @@ pub async fn delete_universities(jwt: String, id: String) -> Result<bool, String
 }
 
 #[tauri::command]
-pub async fn delete_companies(jwt: String, id: String) -> Result<bool, String> {
+pub async fn delete_company(jwt: String, id: String) -> Result<bool, String> {
     match delete_company_request(jwt, id).await {
         Ok(response) => Ok(response.success),
         Err(err) => {
