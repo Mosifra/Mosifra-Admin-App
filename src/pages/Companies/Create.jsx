@@ -21,12 +21,7 @@ export default function CreateCompany() {
       jwt,
     }).then((password) => setGeneratedPassword(password))
 
-    location.route("/success", {
-      state: {
-        password: generatedPassword,
-        redirect: "/companies",
-      },
-    })
+    location.route(`/success?password=${password}&redirect=/companies`);
   }
 
   return (

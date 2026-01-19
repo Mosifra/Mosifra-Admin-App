@@ -2,7 +2,8 @@ import { useLocation } from "preact-iso"
 
 export default function Success() {
   const location = useLocation()
-  const { password, redirect } = location.state || {}
+  const password = location.query.password;
+  const redirect = location.query.redirect;
 
   return (
     <main className="min-h-screen min-w-screen bg-beige-mosifra flex items-center justify-center">

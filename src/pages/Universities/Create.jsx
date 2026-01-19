@@ -21,12 +21,8 @@ export default function CreateUniversity() {
       jwt,
     }).then((password) => setGeneratedPassword(password))
 
-    location.route("/success", {
-      state: {
-        password: generatedPassword,
-        redirect: "/universities",
-      },
-    })
+
+    location.route(`/success?password=${password}&redirect=/universities`);
   }
 
   return (

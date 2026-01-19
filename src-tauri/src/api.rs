@@ -1,8 +1,8 @@
+use crate::commands::get_base_url;
 use crate::domain::{
     CreateCompanyResponse, CreateUniversityResponse, FetchCompaniesResponse,
     FetchUniversitiesResponse,
 };
-use crate::{commands::get_base_url, domain::University};
 use std::collections::HashMap;
 
 pub async fn create_university_request(
