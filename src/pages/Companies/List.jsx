@@ -17,6 +17,7 @@ export default function CompaniesList() {
 
   const handleDelete = async (e, id) => {
     e.preventDefault()
+    //fix id not found
     const jwt = sessionStorage.getItem("jwt")
     try {
       await invoke("delete_company", { jwt: jwt, id: id })

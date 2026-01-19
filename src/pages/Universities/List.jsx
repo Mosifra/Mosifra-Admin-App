@@ -17,6 +17,7 @@ export default function UniversityList() {
   }, [])
 
   const handleDelete = async (e, id) => {
+    //fix id not found
     e.preventDefault()
     const jwt = sessionStorage.getItem("jwt")
     try {
