@@ -10,6 +10,65 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
   in {
+    packages.${system}.default = pkgs.stdenv.mkDerivation rec {
+      pname = "mosifra-admin";
+      version = "0.1.0";
+
+      src = ./.;
+
+      nativeBuildInputs = with pkgs; [
+        pkg-config
+        cargo
+        cargo-tauri
+        rustc
+        bun
+        nodejs
+        wrapGAppsHook3
+      ];
+
+      buildInputs = with pkgs; [
+        at-spi2-atk
+        cairo
+        gdk-pixbuf
+        glib
+        gtk3
+        harfbuzz
+        librsvg
+        libsoup_3
+        pango
+        webkitgtk_4_1
+        openssl
+        glib-networking
+      ];
+
+      buildPhase = ''
+        export HOME=$(mktemp -d)
+
+        bun install --frozen-lockfile
+        bun run build
+
+        cd src-tauri
+        cargo tauri build --bundles deb
+        cd ..
+      '';
+
+      installPhase = ''
+        mkdir -p $out/bin
+
+        cp src-tauri/target/release/${pname} $out/bin/${pname}
+
+        # Or the .deb
+        # mkdir -p $out/share
+        # cp src-tauri/target/release/bundle/deb/*.deb $out/share/
+      '';
+
+      meta = with pkgs.lib; {
+        description = "Mosifra Admin Tauri App";
+        license = licenses.mit;
+        platforms = platforms.linux;
+      };
+    };
+
     devShells.${system}.default = pkgs.mkShell {
       nativeBuildInputs = with pkgs; [
         pkg-config
