@@ -40,7 +40,7 @@ bun tauri dev
 ## Environment file
 
 To properly run the app, you'll need a .env file in the same folder as the
-executable, containing the following values
+executable, containing the following values :
 
 - `JWT_SECRET` : The string to use to hash the jwt tokens which will be created
   by the app.
