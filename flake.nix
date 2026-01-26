@@ -16,13 +16,15 @@
 
       src = ./.;
 
-      cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+      cargoHash = "sha256-h6yp64aQpj534dnxytsnmPdbAPp0QGjCQ20xeDgIlRg=";
 
       npmDeps = pkgs.fetchNpmDeps {
         name = "${pname}-${version}-npm-deps";
         inherit src;
-        hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        hash = "sha256-jE58v93Jfxe+kKSXQ+5R0p1VusaSi/SwIwJ+V1gVe+o=";
       };
+
+      makeCacheWritable = true;
 
       nativeBuildInputs = with pkgs; [
         cargo-tauri.hook
