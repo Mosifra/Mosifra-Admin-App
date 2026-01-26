@@ -37,7 +37,6 @@ pub async fn create_company(
 }
 
 pub async fn get_base_url() -> Result<String, String> {
-    dotenv().ok();
     let url = env::var("API_BASEURL").map_err(|_| "Erreur en récupérant l'url de base")?;
     Ok(url)
 }

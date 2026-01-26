@@ -17,7 +17,6 @@ pub struct LoginResponse {
 }
 
 pub async fn create_jwt() -> Result<String, String> {
-    dotenv().ok();
     let secret = env::var("JWT_SECRET").map_err(|_| "JWT_SECRET non trouvé".to_string())?;
     let claims = Claims {
         session_id: "placeholder".to_string(),
@@ -33,7 +32,6 @@ pub async fn create_jwt() -> Result<String, String> {
 }
 
 pub async fn check_password(attempt: String) -> Result<bool, String> {
-    dotenv().ok();
     let secret = env::var("ADMIN_PWD").map_err(|_| "ADMIN_PWD non trouvé".to_string())?;
     Ok(attempt == secret)
 }
