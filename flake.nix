@@ -63,7 +63,6 @@
         rustfmt
         clippy
         rust-analyzer
-        tmux
       ];
       buildInputs = with pkgs; [
         at-spi2-atk
@@ -89,19 +88,6 @@
         mkdir -p $HOME/.local/bin
         ln -sf $(which xdg-open) $HOME/.local/bin/xdg-open
         export PATH=$HOME/.local/bin:$PATH
-
-        SESSION_NAME="tauri-dev"
-
-        if ! tmux has-session -t $SESSION_NAME 2>/dev/null; then
-          tmux new-session -d -s $SESSION_NAME -n "editor"
-          tmux send-keys -t $SESSION_NAME:0 "neovide" C-m
-
-          tmux new-window -t $SESSION_NAME:1 -n "shell"
-
-          tmux select-window -t $SESSION_NAME:1
-        fi
-
-        tmux attach-session -t $SESSION_NAME
       '';
     };
   };
